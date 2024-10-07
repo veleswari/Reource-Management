@@ -1,0 +1,32 @@
+
+[mat-dialog-actions] button {
+    margin-left: 8px; /* Space between buttons */
+    padding: 6px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Specific style for the Cancel button */
+  [mat-dialog-actions] button:first-child {
+    color: #757575; /* Gray text color */
+    border: 1px solid #757575; /* Gray border */
+    background-color: transparent;
+  }
+  
+  [mat-dialog-actions] button:first-child:hover {
+    background-color: rgba(117, 117, 117, 0.1); /* Light gray background on hover */
+  }
+  
+  /* Specific style for the Add/Save button */
+  [mat-dialog-actions] button[color="primary"] {
+    color: white;
+    border: 1px solid #1976d2; /* Blue border */
+    background-color: #1976d2; /* Blue background */
+  }
+  
+  [mat-dialog-actions] button[color="primary"]:hover {
+    background-color: #1565c0; /* Darker blue on hover */
+    border-color: #1565c0; /* Darker blue border on hover */
+  }
+  

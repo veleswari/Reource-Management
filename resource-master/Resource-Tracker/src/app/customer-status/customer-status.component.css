@@ -1,0 +1,98 @@
+/* customer-status.component.css */
+
+/* Header styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #007bff; /* Blue background color */
+    color: white;
+  }
+  
+  .home-icon {
+    cursor: pointer;
+  }
+  
+  .admin-btn {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .admin-btn:hover {
+    background-color: white;
+    color: #007bff; /* Blue text color on hover */
+  }
+  
+  /* Section styles */
+  .section {
+    margin-top: 20px;
+  }
+  
+  /* Table styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #f0f0f0; /* Alternate table background color */
+  }
+  
+  th, td {
+    border: 1px solid #7E7E7E73;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #007bff; /* Blue header background color */
+    color: white;
+  }
+  
+  /* Form styles */
+  form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"] {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button.delete-btn {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button.delete-btn:hover {
+    background-color: #c82333;
+  }
+  
+  .submit-btn:hover,
+  button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  

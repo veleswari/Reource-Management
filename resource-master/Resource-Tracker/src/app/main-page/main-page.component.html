@@ -1,0 +1,177 @@
+
+<div class="nav-tabs-wrapper">
+  <div class="nav-tabs">
+    <div class="tab active" routerLink="/main">Main Page</div>
+    <div class="tab" routerLink="/admin">Client Status</div>
+    <div class="tab" routerLink="/flex-fields">Flex Fields</div>
+  </div>
+
+  <div id="pie-chart-container" class="pie-chart-container"></div>
+</div>
+
+<!-- Navigation tabs below pie chart and nav tabs -->
+<div class="nav-tabs1">
+  <div class="tab">
+    <p-dropdown [options]="customers" [(ngModel)]="selectedCustomer" (onChange)="onCustomerSelected()" placeholder="Select Customer"></p-dropdown>
+  </div>
+  <div class="tab">
+    <p-dropdown [options]="streams" [(ngModel)]="selectedStream" (onChange)="onStreamSelected()" placeholder="Select Stream"></p-dropdown>
+  </div>
+</div>
+
+
+<!-- Buttons below navigation tabs and pie chart -->
+<div class="add-button-container">
+  <button class="download-report-button" (click)="downloadFile()">
+    <img src="assets/excel_icon.jpg" alt="Download Report" class="icon"> Download Report
+  </button>
+  <button mat-icon-button class="add-resource-button" (click)="openDialog()">
+    <mat-icon>person_add</mat-icon> Add Resource
+  </button>
+</div>
+
+<div class="table-container">
+  <div class="table-scroll-container">
+    <p-table [value]="dataSource" [paginator]="true" [rows]="10" [sortMode]="'multiple'" [responsive]="true">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="spid">
+            SPID
+            <p-sortIcon field="spid"></p-sortIcon>
+            <p-dropdown
+              [options]="getFilterOptions('spid')"
+              [(ngModel)]="filters.spid"
+              (onChange)="applyFilter('spid', $event.value)"
+              placeholder="Select"
+              [showClear]="true" 
+            ></p-dropdown>
+            
+          </th>
+          
+          <th pSortableColumn="requestedDate">Requested Date <p-sortIcon field="requestedDate"></p-sortIcon>
+          <p-dropdown
+          [options]="getFilterOptions('requestedDate')"
+          [(ngModel)]="filters.requestedDate"
+          (onChange)="applyFilter('requestedDate',$event.value)"
+          placeholder="Select"
+          [showClear]="true" 
+          ></p-dropdown>
+          </th>
+          <th pSortableColumn="customerMgrName">Customer Manager Name <p-sortIcon field="customerMgrName"></p-sortIcon>
+            <p-dropdown
+            [options]="getFilterOptions('customerMgrName')"
+            [(ngModel)]="filters.customerMgrName"
+            (onChange)="applyFilter('customerMgrName',$event.value)"
+            placeholder="Select"
+            [showClear]="true" 
+            ></p-dropdown>
+          </th>
+          <th pSortableColumn="skillSet">Skill Set <p-sortIcon field="skillSet"></p-sortIcon>
+            <p-dropdown
+            [options]="getFilterOptions('skillSet')"
+            [(ngModel)]="filters.skillSet"
+            (onChange)="applyFilter('skillSet',$event.value)"
+            placeholder="Select"
+            [showClear]="true" 
+            ></p-dropdown></th>
+          <th pSortableColumn="billRate">Bill Rate <p-sortIcon field="billRate"></p-sortIcon>
+            <p-dropdown
+            [options]="getFilterOptions('billRate')"
+            [(ngModel)]="filters.billRate"
+            (onChange)="applyFilter('billRate',$event.value)"
+            placeholder="Select"
+            [showClear]="true" 
+            ></p-dropdown></th>
+          <th pSortableColumn="overallStatus">Overall Status <p-sortIcon field="overallStatus"></p-sortIcon>
+            <p-dropdown
+            [options]="getFilterOptions('overallStatus')"
+            [(ngModel)]="filters.overallStatus"
+            (onChange)="applyFilter('overallStatus',$event.value)"
+            placeholder="Select"
+            [showClear]="true" 
+            ></p-dropdown>
+          </th>
+          <th pSortableColumn="resourceName">Resource Name <p-sortIcon field="resourceName"></p-sortIcon>
+            <p-dropdown
+            [options]="getFilterOptions('resourceName')"
+            [(ngModel)]="filters.resourceName"
+            (onChange)="applyFilter('resourceName',$event.value)"
+            placeholder="Select"
+            [showClear]="true" 
+            ></p-dropdown>
+          </th>
+          <th pSortableColumn="profileSharedDate">Profile Shared Date <p-sortIcon field="profileSharedDate"></p-sortIcon>
+            <p-dropdown
+            [options]="getFilterOptions('profileSharedDate')"
+            [(ngModel)]="filters.profileSharedDate"
+            (onChange)="applyFilter('profileSharedDate',$event.value)"
+            placeholder="Select"
+            [showClear]="true" 
+            ></p-dropdown>
+          </th>
+          <th pSortableColumn="customerInterviewDate">Customer Interview Date <p-sortIcon field="customerInterviewDate"></p-sortIcon>
+            <p-dropdown
+            [options]="getFilterOptions('customerInterviewDate')"
+            [(ngModel)]="filters.customerInterviewDate"
+            (onChange)="applyFilter('customerInterviewDate',$event.value)"
+            placeholder="Select"
+            [showClear]="true" 
+            ></p-dropdown>
+          </th>
+          <th pSortableColumn="dateOfJoin">Date of Join <p-sortIcon field="dateOfJoin"></p-sortIcon>
+            <p-dropdown
+            [options]="getFilterOptions('dateOfJoin')"
+            [(ngModel)]="filters.dateOfJoin"
+            (onChange)="applyFilter('dateOfJoin',$event.value)"
+            placeholder="Select"
+            [showClear]="true" 
+            ></p-dropdown>
+          </th>
+          <th pSortableColumn="internalExternal">Internal/External <p-sortIcon field="internalExternal"></p-sortIcon>
+            <p-dropdown
+            [options]="getFilterOptions('internalExternal')"
+            [(ngModel)]="filters.internalExternal"
+            (onChange)="applyFilter('internalExternal',$event.value)"
+            placeholder="Select"
+            [showClear]="true" 
+            ></p-dropdown></th>
+          <th pSortableColumn="l1InterviewDate">L1 Interview Date <p-sortIcon field="l1InterviewDate"></p-sortIcon>
+            <p-dropdown
+            [options]="getFilterOptions('l1InterviewDate')"
+            [(ngModel)]="filters.l1InterviewDate"
+            (onChange)="applyFilter('l1InterviewDate',$event.value)"
+            placeholder="Select"
+            [showClear]="true" 
+            ></p-dropdown></th>
+          <th pSortableColumn="rating">Rating <p-sortIcon field="rating"></p-sortIcon></th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData>
+        <tr>
+          <td>{{rowData.spid}}</td>
+          <td>{{rowData.requestedDate | date}}</td>
+          <td>{{rowData.customerMgrName}}</td>
+          <td>{{rowData.skillSet}}</td>
+          <td>{{rowData.billRate}}</td>
+          <td><div class="status-circle" [ngStyle]="{'background-color': getStatusColor(rowData.overallStatus)}"></div></td>
+          <td>{{rowData.resourceName}}</td>
+          <td>{{rowData.profileSharedDate | date}}</td>
+          <td>{{rowData.customerInterviewDate | date}}</td>
+          <td>{{rowData.dateOfJoin | date}}</td>
+          <td>{{rowData.internalExternal}}</td>
+          <td>{{rowData.l1InterviewDate | date}}</td>
+          <td>{{rowData.rating}} <button pButton type="button" label="View" class="view-more-button" (click)="openFlexDialog(rowData)"></button></td>
+          <td>
+            <div class="action-buttons">
+              <button mat-icon-button class="edit" (click)="openDialog(rowData)" matTooltip="Edit"><mat-icon>edit</mat-icon></button>
+              <button mat-icon-button class="delete" (click)="deleteResource(rowData)" matTooltip="Delete"><mat-icon>delete</mat-icon></button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+

@@ -1,0 +1,68 @@
+
+<div class="content">
+  <div class="nav-tabs-wrapper">
+    <div class="nav-tabs">
+      <div class="tab" routerLink="/main-page">Main Page</div>
+      <div class="tab" routerLink="/admin">Client Status</div>
+      <div class="tab active" routerLink="/flex-fields">Flex Fields</div>
+    </div>
+    <div class="add-button-container">
+      <h2>Flex Fields</h2>  
+      <button mat-button (click)="openAddDialog()">
+        <mat-icon>add_box</mat-icon>
+        <span>Add Flex Field</span>
+      </button>
+    </div>
+
+    <!-- PrimeNG Table for Flex Fields -->
+    <p-table [value]="flexFields" [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
+             [loading]="loading" [sortField]="'customId'" [sortOrder]="1">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            <p-dropdown [options]="customIdOptions" (onChange)="applyFilter($event, 'customId')"
+                        placeholder="Select Custom ID"></p-dropdown>
+            Custom ID
+            <p-sortIcon field="customId"></p-sortIcon>
+          </th>
+          <th>
+            <p-dropdown [options]="customerNameOptions" (onChange)="applyFilter($event, 'customerName')"
+                        placeholder="Select Customer Name"></p-dropdown>
+            Customer Name
+            <p-sortIcon field="customerName"></p-sortIcon>
+          </th>
+          <th>
+            <p-dropdown [options]="skillSetOptions" (onChange)="applyFilter($event, 'skillSet')"
+                        placeholder="Select Skill Set"></p-dropdown>
+            Skill Set
+            <p-sortIcon field="skillSet"></p-sortIcon>
+          </th>
+          <th>
+            <p-dropdown [options]="flexValueOptions" (onChange)="applyFilter($event, 'flexValue')"
+                        placeholder="Select Flex Value"></p-dropdown>
+            Flex Value
+            <p-sortIcon field="flexValue"></p-sortIcon>
+          </th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-field let-i="rowIndex">
+        <tr [ngClass]="{'table-odd': i % 2 !== 0, 'table-even': i % 2 === 0}">
+          <td>{{ field.customId }}</td>
+          <td>{{ field.customerName }}</td>
+          <td>{{ field.skillSet }}</td>
+          <td>{{ field.flexValue }}</td>
+          <td class="action-icons">
+            <button mat-icon-button class="edit" (click)="openEditDialog(field)" matTooltip="Edit">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button class="delete" *ngIf="field.customId" (click)="deleteFlexField(field.customId)" matTooltip="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+

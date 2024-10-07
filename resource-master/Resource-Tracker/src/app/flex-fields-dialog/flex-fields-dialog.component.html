@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>{{ data.flexField.customId ? 'Edit Flex Field' : 'Add Flex Field' }}</h2>
+<div mat-dialog-content>
+  <form #flexFieldForm="ngForm">
+   
+    <mat-form-field>
+      <input matInput placeholder="Customer Name" name="customerName" [(ngModel)]="flexField.customerName" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Skill Set" name="skillSet" [(ngModel)]="flexField.skillSet" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Flex Value" name="flexValue" [(ngModel)]="flexField.flexValue" required>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" [disabled]="flexFieldForm.invalid" (click)="onSave()">{{ data.flexField.customId ? 'Update' : 'Save' }}</button>
+</div>

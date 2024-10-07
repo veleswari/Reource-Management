@@ -1,0 +1,12 @@
+<h2>Flex Fields</h2>
+<div class="flex-fields-container">
+  <div *ngFor="let field of ['flexField1Rating', 'flexField2Rating', 'flexField3Rating', 'flexField4Rating']; let i = index">
+    <ng-container *ngIf="resource[field]">
+      <div class="flex-field-box">
+        <div class="field-name">Flex Field {{ i + 1 }} Rating:</div>
+        <div class="flex-field">{{ flexFields[i] }}</div>
+        <div class="rating">{{ resource[field] }}</div>
+      </div>
+    </ng-container>
+  </div>
+</div>

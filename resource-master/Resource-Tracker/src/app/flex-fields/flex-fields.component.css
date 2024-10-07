@@ -1,0 +1,151 @@
+
+.content {
+  margin-top: 100px; /* Adjusted top margin to accommodate red strip */
+}
+/* Navigation Tabs */
+.nav-tabs-wrapper {
+  background-color: white; 
+  position: fixed;
+  top: 80px; /* Positioned right below the red-strip */
+  width: 100%;
+  z-index: 998;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 0; /* Remove margin-top to eliminate space above */
+  position: fixed; /* Change from relative to fixed to keep it on top */
+  top: 80px; /* Adjust this value to position it below the red-strip */
+  z-index: 998;
+  width: 100%;
+}
+
+.tab {
+  padding: 5px 10px; /* Reduce padding to make tabs narrower */
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+  color: #333;
+  min-width: 130px; /* Set a minimum width for each tab */
+  font-size: 12px; /* Adjust font size if needed */
+  transition: background-color 0.3s, color 0.3s;
+  flex: 0; /* Prevent tabs from expanding to fill the space */
+  bottom: 10px;
+}
+
+.tab.active {
+  background-color: #fff;
+  border-bottom: 2px solid #007bff;
+  font-weight: bold;
+}
+.tab:hover {
+  background-color: #f1f1f1;
+}
+h2 {
+  margin-top: 70px; /* Adjusted top margin to accommodate red strip */
+  margin-bottom: 30px; /* Margin below the heading */
+}
+.add-button-container {
+  display: flex;
+  justify-content: space-between; /* Space between heading and button */
+  align-items: center;
+  margin-top: 10px; /* Space between the search bar and "Add Resource" button */
+
+}
+
+.add-button-container h2 {
+  margin: 0; /* Remove default margin */
+}
+
+.add-button-container button {
+  background-color: transparent;
+  color: #1976d2;
+  border: 2px solid #1976d2; /* Add a border around the button */
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.add-button-container button mat-icon {
+  margin-right: 4px;
+  font-size: 18px; /* Adjust icon size if needed */
+}
+
+.add-button-container button:hover {
+  background-color: rgba(25, 118, 210, 0.1); /* Slight background change on hover */
+  border-color: #1565c0; /* Darker border color on hover */
+}
+
+.add-button-container button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.5);
+}
+
+
+button {
+  margin-bottom: 10px; /* Margin below buttons */
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: 1px solid #ccc; /* Gray border */
+  padding: 8px; /* Padding inside cells */
+  text-align: left; /* Align text to the left */
+}
+
+table th {
+  background-color: #E5E6E7; /* Light gray background for header */
+  border-bottom: 2px solid #7E7E7E73; /* Dark blue border at the bottom */
+}
+table tr:nth-child(even) {
+  background-color: #E5E6E7; /* Light gray background for odd rows */
+}
+
+table tr:nth-child(odd) {
+  background-color: #ffffff; /* White background for even rows */
+}
+/* Action buttons */
+
+
+/* Action Buttons */
+.action-icons {
+  display: flex; /* Use flexbox to place buttons beside each other */
+  justify-content: flex-start; /* Align items to the start */
+  gap: 8px; /* Add some space between buttons */
+  background-color: transparent;
+  padding: 8px 0; /* Adjust padding for the container */
+}
+
+.action-icons button {
+  background-color: transparent;
+  color: inherit; /* Inherit color from parent */
+  border: none;
+  padding: 0; /* Remove padding */
+  margin: 4px 2px; /* Remove margin */
+  cursor: pointer; /* Pointer cursor */
+  display: flex; /* Ensure buttons are flex items */
+  align-items: center; /* Center align icon inside button */
+  transition: background-color 0.3s ease;
+}
+
+.action-icons button.edit {
+  color: #2196f3; /* Blue color for edit icon */
+}
+
+.action-icons button.delete {
+  color: #f44336; /* Red color for delete icon */
+}
+

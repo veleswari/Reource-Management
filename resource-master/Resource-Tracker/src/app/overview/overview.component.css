@@ -1,0 +1,132 @@
+/* Ensure the red strip is properly fixed */
+.red-strip {
+    background-color: #F9F8FF;
+    border-top: #E03131 solid;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+  
+/* Ensure logo size */
+.red-strip .logo-container img {
+    height: 20px;
+    width: auto;
+}
+  
+/* Style for the login button */
+.red-strip .admin-login {
+    color: black;
+    font-size: 20px;
+    padding-right: 40px;
+    font-weight: bold;
+}
+  
+.red-strip .admin-login button {
+    color: black;
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Add padding-top to the main container to avoid overlap */
+.main-content {
+    padding-top: 80px; /* Adjust this value if needed */
+}
+
+/* Style for the table */
+p-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Header styles */
+.header-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-text {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+    color: #2D2D2D;
+}
+
+.sort-icon {
+    margin-left: 0.5rem;
+}
+
+th {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+}
+
+th p-dropdown {
+    margin-top: 5px;
+}
+
+/* Body styles */
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+}
+
+td ng-container {
+    display: block;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Pagination and sorting styles */
+.paginator {
+    margin-top: 1rem;
+}
+
+.p-sortIcon {
+    cursor: pointer;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .header-text {
+        font-size: 12px;
+    }
+
+    td {
+        font-size: 10px;
+        padding: 5px;
+    }
+}
+
+/* Styling for the status circle */
+.status-circle {
+    width: 20px;        
+    height: 20px;       
+    border-radius: 50%; 
+    display: inline-block;
+    background-color: #FFFFFF; 
+    align-items: center;
+}
+
+/* Position the pie chart towards the left */
+.pie-chart-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px; /* Adjust as needed */
+   align-items: right;
+}

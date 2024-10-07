@@ -1,0 +1,135 @@
+
+/* Ensure space for both red-strip and nav-tabs */
+.content-below-red-strip {
+  margin-top: 510px; /* Increased margin to provide space below both the header and tabs */
+}
+
+/* Navigation Tabs */
+.nav-tabs-wrapper {
+  background-color: white; 
+  position: fixed;
+  top: 50px; /* Positioned right below the red-strip */
+  width: 100%;
+  z-index: 998;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 0; /* Remove margin-top to eliminate space above */
+  position: fixed; /* Change from relative to fixed to keep it on top */
+  top: 80px; /* Adjust this value to position it below the red-strip */
+  z-index: 998;
+  width: 100%;
+}
+
+.tab {
+  padding: 5px 10px; /* Reduce padding to make tabs narrower */
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+  color: #333;
+  min-width: 130px; /* Set a minimum width for each tab */
+  font-size: 12px; /* Adjust font size if needed */
+  transition: background-color 0.3s, color 0.3s;
+  flex: 0; /* Prevent tabs from expanding to fill the space */
+  bottom: 10px;
+}
+
+.tab.active {
+  background-color: #fff;
+  border-bottom: 2px solid #007bff;
+  font-weight: bold;
+}
+.tab:hover {
+  background-color: #f1f1f1;
+}
+
+/* Add Button Container */
+.add-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.add-button-container h2 {
+  margin: 0;
+}
+
+.add-button-container button {
+  background-color: transparent;
+  color: #1976d2;
+  border: 2px solid #1976d2;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.add-button-container button mat-icon {
+  margin-right: 4px;
+  font-size: 18px;
+}
+
+.add-button-container button:hover {
+  background-color: rgba(25, 118, 210, 0.1);
+  border-color: #1565c0;
+}
+
+.add-button-container button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.5);
+}
+
+/* Table Styles */
+table {
+  width: 70%;
+  border-collapse: collapse;
+  margin: 0 auto; /* Center the table horizontally */
+  margin-top: 30px; /* Space above the table */
+}
+
+th {
+  background-color: #E5E6E7;
+  color: black;
+  font-weight: bold;
+  border-bottom: 2px solid #7E7E7E73;
+  height: 30px;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+tr.odd-row {
+  background-color: #E5E6E7;
+}
+
+tr.even-row {
+  background-color: #ffffff;
+}
+
+button.mat-icon-button {
+  font-size: 24px;
+  color: inherit;
+}
+
+button.edit mat-icon {
+  color: #2196f3;
+}
+
+button.delete mat-icon {
+  color: #f44336;
+}
+

@@ -1,0 +1,69 @@
+<div class="red-strip">
+  <div class="logo-container">
+    <img src="./assets/logo.png" alt="Logo">
+  </div>
+  <div class="admin-login">
+    <button (click)="login()">Login</button>
+  </div>
+</div>
+<!-- Add this where you want to place the chart in your HTML template -->
+<div id="pie-chart-container" class="pie-chart-container" style="width: 200px; height: 200px;"></div>
+
+
+<div class="main-content">
+  <p-table
+    [value]="rowData"
+    [paginator]="true"
+    [rows]="pagination.size"
+    [totalRecords]="pagination.totalRecords"
+    (onPage)="onPageChange($event)"
+    (onSort)="onSortChange($event)"
+    [sortMode]="'multiple'"
+    [resizableColumns]="true"
+    [columnResizeMode]="'fit'">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+          <div class="header-container">
+            <div class="header-text">
+              {{ col.header }}
+              <p-sortIcon [field]="col.field" class="sort-icon"></p-sortIcon>
+            </div>
+            <ng-container *ngIf="col.filter">
+              <p-dropdown
+                [options]="getFilterOptions(col.field)"
+                (onChange)="onFilterChange(col.field, $event.value)"
+                placeholder="Select"
+                [style]="{'width':'100%'}"
+                [autoDisplayFirst]="true"
+                [appendTo]="'body'"
+                [filter]="true"
+                [showClear]="true"
+              ></p-dropdown>
+            </ng-container>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData>
+      <tr>
+        <td *ngFor="let col of columns">
+          <ng-container *ngIf="col.field === 'overallStatus'">
+            <div class="status-circle" [ngStyle]="{ 'background-color': getStatusColor(rowData[col.field]) }"></div>
+          </ng-container>
+          <ng-container *ngIf="col.field !== 'overallStatus'">
+            <ng-container *ngIf="rowData[col.field]">
+              {{ rowData[col.field] }}
+            </ng-container>
+            <ng-container *ngIf="!rowData[col.field]">
+              N/A
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+    </ng-template>
+    
+  </p-table>
+</div>

@@ -1,0 +1,63 @@
+<!-- customer-status.component.html -->
+<div class="header">
+  <a routerLink="/main-page" pTooltip="Go to Main Page" class="home-icon">
+    <i class="pi pi-home"></i>
+  </a>
+  <button routerLink="/admin" pButton label="Admin" class="admin-btn"></button>
+</div>
+
+<!-- Customer Statuses Section -->
+<div class="section">
+  <h2>Customer Statuses</h2>
+  <p-listbox [options]="customerStatuses">
+    <ng-template pTemplate="item" let-status>
+      <div>
+        {{ status.customerName }} - {{ status.status }}
+        <button pButton icon="pi pi-trash" (click)="deleteCustomerStatus(status.customerName, status.status)" class="delete-btn"></button>
+      </div>
+    </ng-template>
+  </p-listbox>
+
+  <p-panel header="Create Customer Status">
+    <form (submit)="createCustomerStatus()">
+      <div class="p-field">
+        <label for="customerName">Customer Name:</label>
+        <input id="customerName" type="text" pInputText [(ngModel)]="newCustomerStatus.customerName" name="customerName" required />
+      </div>
+      <div class="p-field">
+        <label for="status">Status:</label>
+        <input id="status" type="text" pInputText [(ngModel)]="newCustomerStatus.status" name="status" required />
+      </div>
+      <button type="submit" pButton label="Create Status" class="submit-btn"></button>
+    </form>
+  </p-panel>
+</div>
+
+<hr>
+
+<!-- Customer Tracks Section -->
+<div class="section">
+  <h2>Customer Tracks</h2>
+  <p-listbox [options]="customerTracks">
+    <ng-template pTemplate="item" let-track>
+      <div>
+        {{ track.customerName }} - {{ track.stream }}
+        <button pButton icon="pi pi-trash" (click)="deleteCustomerTrack(track.customerName, track.stream)" class="delete-btn"></button>
+      </div>
+    </ng-template>
+  </p-listbox>
+
+  <p-panel header="Create Customer Track">
+    <form (submit)="createCustomerTrack()">
+      <div class="p-field">
+        <label for="trackCustomerName">Customer Name:</label>
+        <input id="trackCustomerName" type="text" pInputText [(ngModel)]="newCustomerTrack.customerName" name="customerName" required />
+      </div>
+      <div class="p-field">
+        <label for="stream">Stream:</label>
+        <input id="stream" type="text" pInputText [(ngModel)]="newCustomerTrack.stream" name="stream" required />
+      </div>
+      <button type="submit" pButton label="Create Track" class="submit-btn"></button>
+    </form>
+  </p-panel>
+</div>

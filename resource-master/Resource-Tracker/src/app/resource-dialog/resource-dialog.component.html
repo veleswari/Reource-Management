@@ -1,0 +1,170 @@
+<div mat-dialog-content>
+  <h2 class="dialog-title">{{ isNewResource ? 'Add Resource' : 'Edit Data' }}</h2>
+  <form [formGroup]="resourceForm">
+    <mat-form-field appearance="fill">
+      <mat-label>SPID</mat-label>
+      <input matInput formControlName="spid" />
+      <mat-error *ngIf="resourceForm.get('spid')?.hasError('required')">SPID is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Customer Name</mat-label>
+      <mat-select formControlName="customerName" (selectionChange)="onCustomerSelected($event.value)">
+        <mat-option *ngFor="let customer of customers" [value]="customer">{{ customer }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Stream</mat-label>
+      <mat-select formControlName="stream">
+        <mat-option *ngFor="let stream of streams" [value]="stream">{{ stream }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Customer Manager Name</mat-label>
+      <input matInput formControlName="customerMgrName" />
+      <mat-error *ngIf="resourceForm.get('customerMgrName')?.hasError('required')">Customer Manager Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Requested Date</mat-label>
+      <input matInput [matDatepicker]="requestedDatePicker" formControlName="requestedDate" />
+      <mat-datepicker-toggle matSuffix [for]="requestedDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #requestedDatePicker></mat-datepicker>
+      <mat-error *ngIf="resourceForm.get('requestedDate')?.hasError('required')">Requested Date is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Skill Set</mat-label>
+      <mat-select formControlName="skillSet" (selectionChange)="onSkillSetSelected($event.value)">
+        <mat-option *ngFor="let skillSet of skillSets" [value]="skillSet">{{ skillSet }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="resourceForm.get('skillSet')?.hasError('required')">Skill Set is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Resource Name</mat-label>
+      <input matInput formControlName="resourceName" />
+      <mat-error *ngIf="resourceForm.get('resourceName')?.hasError('required')">Resource Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>No Of Years</mat-label>
+      <input matInput formControlName="noOfYears" />
+      <mat-error *ngIf="resourceForm.get('noOfYears')?.hasError('required')">Number of Years is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Internal/External</mat-label>
+      <mat-select formControlName="internalExternal">
+        <mat-option value="internal">Internal</mat-option>
+        <mat-option value="external">External</mat-option>
+      </mat-select>
+      <mat-error *ngIf="resourceForm.get('internalExternal')?.hasError('required')">Internal/External is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Profile Shared Date</mat-label>
+      <input matInput [matDatepicker]="profileSharedDatePicker" formControlName="profileSharedDate" />
+      <mat-datepicker-toggle matSuffix [for]="profileSharedDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #profileSharedDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Customer Interview Date</mat-label>
+      <input matInput [matDatepicker]="customerInterviewDatePicker" formControlName="customerInterviewDate" />
+      <mat-datepicker-toggle matSuffix [for]="customerInterviewDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #customerInterviewDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>L1 Interview Date</mat-label>
+      <input matInput [matDatepicker]="l1InterviewDatePicker" formControlName="l1InterviewDate"
+       [disabled]="resourceForm.get('internalExternal')?.value === 'internal'">
+      <mat-datepicker-toggle matSuffix [for]="l1InterviewDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #l1InterviewDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Date Of Join</mat-label>
+      <input matInput [matDatepicker]="dateOfJoinPicker" formControlName="dateOfJoin" />
+      <mat-datepicker-toggle matSuffix [for]="dateOfJoinPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dateOfJoinPicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Bill Rate</mat-label>
+      <input matInput formControlName="billRate" />
+      <mat-error *ngIf="resourceForm.get('billRate')?.hasError('required')">Bill Rate is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Overall Status</mat-label>
+      <mat-select formControlName="overallStatus">
+        <mat-option value="selected">Selected </mat-option>
+        <mat-option value="rejected">Rejected</mat-option>
+        <mat-option value="inProgress">In Progress</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Flex Field 1 Rating:</mat-label>
+      <!-- Display the selected value if it exists -->
+      <span *ngIf="resourceForm.get('flexField1RatingInput')?.value">{{ resourceForm.get('flexField1RatingInput')?.value }}</span>
+      <!-- Input field for typing rating -->
+      <input matInput formControlName="flexField1Rating" placeholder="Type rating here">
+      <!-- Dropdown for selecting rating -->
+      <mat-select formControlName="flexField1RatingInput" *ngIf="!resourceForm.get('flexField1RatingInput')?.value" (selectionChange)="onFlexField1Selected($event.value)">
+        <mat-option *ngFor="let flexValue of flexValues" [value]="flexValue">{{ flexValue }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Flex Field 2 Rating:</mat-label>
+      <!-- Display the selected value if it exists -->
+      <span *ngIf="resourceForm.get('flexField2RatingInput')?.value">{{ resourceForm.get('flexField2RatingInput')?.value }}</span>
+      <!-- Input field for typing rating -->
+      <input matInput formControlName="flexField2Rating" placeholder="Type rating here">
+      <!-- Dropdown for selecting rating -->
+      <mat-select formControlName="flexField2RatingInput" *ngIf="!resourceForm.get('flexField2RatingInput')?.value" (selectionChange)="onFlexField2Selected($event.value)">
+        <mat-option *ngFor="let flexValue of flexValues" [value]="flexValue">{{ flexValue }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Flex Field 3 Rating:</mat-label>
+      <!-- Display the selected value if it exists -->
+      <span *ngIf="resourceForm.get('flexField3RatingInput')?.value">{{ resourceForm.get('flexField3RatingInput')?.value }}</span>
+      <!-- Input field for typing rating -->
+      <input matInput formControlName="flexField3Rating" placeholder="Type rating here">
+      <!-- Dropdown for selecting rating -->
+      <mat-select formControlName="flexField3RatingInput" *ngIf="!resourceForm.get('flexField3RatingInput')?.value" (selectionChange)="onFlexField3Selected($event.value)">
+        <mat-option *ngFor="let flexValue of flexValues" [value]="flexValue">{{ flexValue }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Flex Field 4 Rating:</mat-label>
+      <!-- Display the selected value if it exists -->
+      <span *ngIf="resourceForm.get('flexField4RatingInput')?.value">{{ resourceForm.get('flexField4RatingInput')?.value }}</span>
+      <!-- Input field for typing rating -->
+      <input matInput formControlName="flexField4Rating" placeholder="Type rating here">
+      <!-- Dropdown for selecting rating -->
+      <mat-select formControlName="flexField4RatingInput" *ngIf="!resourceForm.get('flexField4RatingInput')?.value" (selectionChange)="onFlexField4Selected($event.value)">
+        <mat-option *ngFor="let flexValue of flexValues" [value]="flexValue">{{ flexValue }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    
+    
+    
+  
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button color="primary" (click)="isNewResource ? onAddSubmit() : onEditSubmit()">
+    {{ isNewResource ? 'Add' : 'Save' }}
+  </button>
+</div>
